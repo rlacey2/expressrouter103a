@@ -9,7 +9,7 @@ var https = require('https');
 var http  = require('http');  
 var toobusy = require('toobusy-js');   // https://www.npmjs.com/package/toobusy-js
 
-var platform = require('./node_server/platform.js').configure();;
+var platform = require('./node_server/platform.js').configure();
  
 app.enable('trust proxy'); // needed for req.secure for bluemix
  
@@ -63,7 +63,6 @@ app.get('/', function(req, res) {
 });
 
 
-
 app.use(function(req, res, next) { // If no route is matched by now, it must be a 404
 	console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
     var err = new Error('Route Not Found, are you using the correct http verb / is it defined?\n\n' + req.method + "\t" + req.path + "\n\n");
@@ -71,11 +70,7 @@ app.use(function(req, res, next) { // If no route is matched by now, it must be 
     next(err);
 });
 
-
-
-
-
-
+ 
 if (platform.isLocalHost) { //was cfCore.isLocal
 // openssl genrsa -out test-key.pem 1024 
 // openssl req -new -key test-key.pem -out certrequest.csr
